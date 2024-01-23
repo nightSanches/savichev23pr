@@ -9,7 +9,7 @@ namespace savichev23pr.Interfaces
     public interface IGift
     {
         void Save(bool Update = false);
-        List<Classes.GiftContext> AllDocuments();
+        List<Classes.GiftContext> AllGifts();
         void Delete();
     }
 }

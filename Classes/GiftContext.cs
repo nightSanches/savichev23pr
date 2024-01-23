@@ -1,4 +1,5 @@
-﻿using System;
+﻿using savichev23pr.Interfaces;
+using savichev23pr.Models;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
@@ -9,28 +10,27 @@ namespace savichev23pr.Classes
 {
     public class GiftContext : Gift, IGift
     {
-        public List<GiftContext> AllDocuments()
+        public List<GiftContext> AllGifts()
         {
-            List<GiftContext> allDocuments = new List<GiftContext>();
+            List<GiftContext> allGifts = new List<GiftContext>();
 
             OleDbConnection connection = Common.DBConnection.Connection();
-            OleDbDataReader dataDocuments = Common.DBConnection.Query("SELECT * FROM [Документы]", connection);
-            while (dataDocuments.Read())
+            OleDbDataReader dataGifts = Common.DBConnection.Query("SELECT * FROM [Документы]", connection);
+            while (dataGifts.Read())
             {
-                GiftContext newDocument = new GiftContext();
-                newDocument.id = dataDocuments.GetInt32(0);
-                newDocument.fio = dataDocuments.GetString(1);
-                newDocument.name = dataDocuments.GetString(2);
-                newDocument.user = dataDocuments.GetString(3);
-                newDocument.date = dataDocuments.GetDateTime(5);
-                newDocument.status = dataDocuments.GetInt32(6);
-                newDocument.vector = dataDocuments.GetString(7);
+                GiftContext newGift = new GiftContext();
+                newGift.id = dataGifts.GetInt32(0);
+                newGift.fio = dataGifts.GetString(1);
+                newGift.message = dataGifts.GetString(2);
+                newGift.adress = dataGifts.GetString(3);
+                newGift.datetime = dataGifts.GetDateTime(5);
+                newGift.email = dataGifts.GetString(6);
 
-                allDocuments.Add(newDocument);
+                allGifts.Add(newGift);
             }
             Common.DBConnection.CloseConnection(connection);
 
-            return allDocuments;
+            return allGifts;
         }
 
         public void Save(bool Update = false)
