@@ -25,7 +25,7 @@ namespace savichev23pr.Pages
     public partial class Add : Page
     {
         public Gift Gift;
-        public Add()
+        public Add(Gift Gift = null)
         {
             InitializeComponent();
             if (Gift != null)
