@@ -23,8 +23,8 @@ namespace savichev23pr.Classes
                 newGift.fio = dataGifts.GetString(1);
                 newGift.message = dataGifts.GetString(2);
                 newGift.adress = dataGifts.GetString(3);
-                newGift.datetime = dataGifts.GetDateTime(5);
-                newGift.email = dataGifts.GetString(6);
+                newGift.dt = dataGifts.GetDateTime(4);
+                newGift.email = dataGifts.GetString(5);
 
                 allGifts.Add(newGift);
             }
@@ -42,8 +42,8 @@ namespace savichev23pr.Classes
                     "SET " + $"[ФИО] = '{this.fio}', " +
                     $"[Сообщение] = '{this.message}', " +
                     $"[Адрес] = '{this.adress}', " +
-                    $"[Дата и время] = '{this.datetime}', " +
-                    $"[Почта] = {this.email}, " +
+                    $"[Дата и время] = '{this.dt.ToString("dd.MM.yyyy HH:mm:ss")}', " +
+                    $"[Почта] = '{this.email}' " +
                     $"WHERE [Код] = {this.id}", connection);
                 Common.DBConnection.CloseConnection(connection);
             }
@@ -60,7 +60,7 @@ namespace savichev23pr.Classes
                     $"'{this.fio}', " +
                     $"'{this.message}', " +
                     $"'{this.adress}', " +
-                    $"'{this.datetime}', " +
+                    $"'{this.dt.ToString("dd.MM.yyyy HH:mm:ss")}', " +
                     $"'{this.email}')", connection);
 
                 Common.DBConnection.CloseConnection(connection);

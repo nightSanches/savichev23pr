@@ -34,7 +34,7 @@ namespace savichev23pr.Pages
                 tb_fio.Text = this.Gift.fio;
                 tb_message.Text = this.Gift.message;
                 tb_adress.Text = this.Gift.adress;
-                tb_datetime.Text = this.Gift.datetime.ToString();
+                tb_datetime.Text = this.Gift.dt.ToString("dd.MM.yyyy HH:mm:ss");
                 tb_email.Text = this.Gift.email;
                 bthAdd.Content = "Изменить";
             }
@@ -79,7 +79,7 @@ namespace savichev23pr.Pages
                 newGift.adress = tb_adress.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_datetime.Text, out newDate);
-                newGift.datetime = newDate;
+                newGift.dt = newDate;
                 newGift.email = tb_email.Text;
                 newGift.Save();
                 MessageBox.Show("Документ добавлен.");
@@ -87,12 +87,13 @@ namespace savichev23pr.Pages
             else
             {
                 GiftContext newGift = new GiftContext();
+                newGift.id = Gift.id;
                 newGift.fio = tb_fio.Text;
                 newGift.message = tb_message.Text;
                 newGift.adress = tb_adress.Text;
                 DateTime newDate = new DateTime();
                 DateTime.TryParse(tb_datetime.Text, out newDate);
-                newGift.datetime = newDate;
+                newGift.dt = newDate;
                 newGift.email = tb_email.Text;
                 newGift.Save(true);
                 MessageBox.Show("Документ изменён.");

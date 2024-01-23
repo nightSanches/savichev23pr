@@ -12,7 +12,7 @@ namespace savichev23pr.Models
         public string fio { get; set; }
         public string message { get; set; }
         public string adress { get; set; }
-        public DateTime datetime { get; set; }
+        public DateTime dt { get; set; }
         public string email { get; set; }
     }
 }

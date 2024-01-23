@@ -31,7 +31,7 @@ namespace savichev23pr.Elements
             lFIO.Content = Gift.fio;
             lMessage.Content = $"Сообщение: {Gift.message}";
             lAdress.Content = $"Адрес: {Gift.adress}";
-            lDatetime.Content = $"Дата и врема отправки: {Gift.datetime.ToString()}";
+            lDatetime.Content = $"Дата и врема отправки: {Gift.dt.ToString("dd.MM.yyyy HH:mm:ss")}";
             lEmail.Content = $"Почта: {Gift.email}";
             this.Gift = Gift;
         }
