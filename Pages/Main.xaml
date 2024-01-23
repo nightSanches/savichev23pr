@@ -10,7 +10,7 @@
 
     <Grid Background="Gray">
         <StackPanel ></StackPanel>
-        <Button Click="AddDocuments" Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="89"/>
+        <Button Click="Add" Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="89"/>
         <ScrollViewer Margin="129,10,22,10">
             <StackPanel x:Name="parent"></StackPanel>
         </ScrollViewer>
