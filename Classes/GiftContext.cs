@@ -15,7 +15,7 @@ namespace savichev23pr.Classes
             List<GiftContext> allGifts = new List<GiftContext>();
 
             OleDbConnection connection = Common.DBConnection.Connection();
-            OleDbDataReader dataGifts = Common.DBConnection.Query("SELECT * FROM [Документы]", connection);
+            OleDbDataReader dataGifts = Common.DBConnection.Query("SELECT * FROM [Заказы]", connection);
             while (dataGifts.Read())
             {
                 GiftContext newGift = new GiftContext();
@@ -38,14 +38,12 @@ namespace savichev23pr.Classes
             if (Update)
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
-                Common.DBConnection.Query("UPDATE [Документы] " +
-                    "SET " + $"[Изображение] = '{this.src}', " +
-                    $"[Наименование] = '{this.name}', " +
-                    $"[Ответственный] = '{this.user}', " +
-                    $"[Код документа] = '{this.id_document}', " +
-                    $"[Дата поступления] = '{this.date.ToString("dd.MM.yyyy")}', " +
-                    $"[Статус] = {this.status}, " +
-                    $"[Направление] = '{this.vector}' " +
+                Common.DBConnection.Query("UPDATE [Заказы] " +
+                    "SET " + $"[ФИО] = '{this.fio}', " +
+                    $"[Сообщение] = '{this.message}', " +
+                    $"[Адрес] = '{this.adress}', " +
+                    $"[Дата и время] = '{this.datetime}', " +
+                    $"[Почта] = {this.email}, " +
                     $"WHERE [Код] = {this.id}", connection);
                 Common.DBConnection.CloseConnection(connection);
             }
@@ -53,21 +51,17 @@ namespace savichev23pr.Classes
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
                 Common.DBConnection.Query("INSERT INTO " +
-                    "[Документы]" +
-                    "([Изображение], " +
-                    "[Наименование], " +
-                    "[Ответственный], " +
-                    "[Код документа], " +
-                    "[Дата поступления], " +
-                    "[Статус], " +
-                    "[Направление])" + "VALUES (" +
-                    $"'{this.src}', " +
-                    $"'{this.name}', " +
-                    $"'{this.user}', " +
-                    $"'{this.id_document}', " +
-                    $"'{this.date.ToString("dd.MM.yyyy")}', " +
-                    $"'{this.status}', " +
-                    $"'{this.vector}')", connection);
+                    "[Заказы]" +
+                    "([ФИО], " +
+                    "[Сообщение], " +
+                    "[Адрес], " +
+                    "[Дата и время], " +
+                    "[Почта])" + "VALUES (" +
+                    $"'{this.fio}', " +
+                    $"'{this.message}', " +
+                    $"'{this.adress}', " +
+                    $"'{this.datetime}', " +
+                    $"'{this.email}')", connection);
 
                 Common.DBConnection.CloseConnection(connection);
             }
@@ -76,7 +70,7 @@ namespace savichev23pr.Classes
         public void Delete()
         {
             OleDbConnection connection = Common.DBConnection.Connection();
-            Common.DBConnection.Query($"DELETE FROM [Документы] WHERE [Код] = {this.id}", connection);
+            Common.DBConnection.Query($"DELETE FROM [Заказы] WHERE [Код] = {this.id}", connection);
             Common.DBConnection.CloseConnection(connection);
         }
     }
